@@ -10,7 +10,6 @@ const Coin = db.define('coin', {
   },
   name:{
     type: Sequelize.STRING,
-    unique: true,
     allowNull: false
   },
   icon:{
