@@ -150,7 +150,7 @@ axios.get('https://coincap.io/front')
 .then(res => res.data)
 .then(data => {
   for(var i=0; i<data.length;i++){
-    let iconURL = (icons[data[i].short] !== undefined) ? `/public/icons/${data[i].short}.svg` : 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Antu_application-default-icon.svg/1024px-Antu_application-default-icon.svg.png'
+    let iconURL = (icons[data[i].short] !== undefined) ? `/icons/${data[i].short}.svg` : 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Antu_application-default-icon.svg/1024px-Antu_application-default-icon.svg.png'
     coinData.push({
       symbol: data[i].short,
       name: data[i].long,
