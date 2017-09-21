@@ -4,8 +4,8 @@ import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Login, Signup, UserHome} from './components'
-import {me} from './store'
+import {Main, Login, Signup, UserHome, CoinsList} from './components'
+import {me, fetchAllCoins} from './store'
 
 /**
  * COMPONENT
@@ -17,11 +17,14 @@ class Routes extends Component {
 
   render () {
     const {isLoggedIn} = this.props
+    // const {coins} = this.props
 
     return (
       <Router history={history}>
         <Main>
           <Switch>
+            <Route path='/coins' component={CoinsList} />
+            {/* <Route path='/coins' render={()=> <CoinsList coins={coins} />} /> */}
             {/* Routes placed here are available to all visitors */}
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
@@ -48,7 +51,8 @@ const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    coins: state.coins
   }
 }
 
@@ -56,6 +60,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
       dispatch(me())
+      dispatch(fetchAllCoins())
     }
   }
 }
