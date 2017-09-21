@@ -10,11 +10,13 @@ let data = {
   userData: [
     {name: 'Alex', isAdmin: true, password: '123', email: 'Alex@gmail.com'},
     {name: 'Ranjeet', isAdmin: true, password: '123', email: 'Ranjeet@gmail.com'},
+    {name: 'Bojan', isAdmin: true, password: '123', email: 'Bojan@gmail.com'},
+    {name: 'Kim', isAdmin: true, password: '123', email: 'kim@gmail.com'}
   ],
-  coinData: [
-    { symbol: 'BTC', name: 'Bitcoin', icon: 'https://bitcoin.org/img/icons/opengraph.png', currentPrice: 3709.9474442048486, currentSupply:16579100, currentVolume: 1127060000, currentMarketCap:61507589672.216606 },
-    { symbol: 'ETH', name: 'Ethereum', icon: 'https://bitcoin.org/img/icons/opengraph.png', currentPrice: 272.817, currentSupply:94750947, currentVolume: 394370000, currentMarketCap:25849669107.699 },
-  ],
+  // coinData: [
+  //   { symbol: 'BTC', name: 'Bitcoin', icon: 'https://bitcoin.org/img/icons/opengraph.png', currentPrice: 3709.9474442048486, currentSupply:16579100, currentVolume: 1127060000, currentMarketCap:61507589672.216606 },
+  //   { symbol: 'ETH', name: 'Ethereum', icon: 'https://bitcoin.org/img/icons/opengraph.png', currentPrice: 272.817, currentSupply:94750947, currentVolume: 394370000, currentMarketCap:25849669107.699 },
+  // ],
   transactionData: [
     { purchaseQuantity: 10, purchasePrice: 4000.00, purchaseDate: '2017-09-19 23:43:20.759 +00:00', userId: 1, coinId: 1 },
     { purchaseQuantity: 3, purchasePrice: 2500.00, purchaseDate: '2017-09-19 19:43:14.151-04', userId: 1, coinId: 1 },
@@ -26,7 +28,7 @@ let data = {
 
 //Force sync the db, and then create the data in the two tables.
 User.sync({force:true})
-  .then(() => Coin.sync({force: true}))
+  // .then(() => Coin.sync({force: true}))
   .then(() => Transaction.sync({force: true}))
   .then(() => {
     console.log('Dropping data in the database, and re-seeding');
@@ -36,13 +38,13 @@ User.sync({force:true})
       })
     );
   })
-  .then(()=>{
-    return Promise.all(
-      data['coinData'].map((coin)=>{
-        return Coin.create(coin);
-      })
-    );
-  })
+  // .then(()=>{
+  //   return Promise.all(
+  //     data['coinData'].map((coin)=>{
+  //       return Coin.create(coin);
+  //     })
+  //   );
+  // })
   .then(()=>{
     return Promise.all(
       data['transactionData'].map((transaction)=>{
