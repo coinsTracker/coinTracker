@@ -17,7 +17,7 @@ class TransactionLine extends Component {
       <td>{transaction.purchaseQuantity}</td>
       <td>$ {transaction.purchasePrice}</td>
       <td>$ {transaction.purchasePrice*transaction.purchaseQuantity}</td>
-      <td>$ {transaction.coin.currentPrice}</td>
+      <td>$ {(transaction.coin.currentPrice).toFixed(2)}</td>
       <td>$ {(transaction.purchaseQuantity*(transaction.coin.currentPrice- transaction.purchasePrice)).toFixed(2)}</td>
       <td>{(((transaction.coin.currentPrice - transaction.purchasePrice)/transaction.coin.currentPrice)*100).toFixed(2)} %</td>
     </tr>)

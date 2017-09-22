@@ -23,8 +23,9 @@ const TransactionsList = (props) => {
       weightedAvgPriceDen += transaction.purchaseQuantity
       sumTotalProfitLoss += (transaction.purchaseQuantity*(transaction.coin.currentPrice - transaction.purchasePrice))
     })
-    weightedAvgPrice = weightedAvgPriceNum/weightedAvgPriceDen
+    weightedAvgPrice = (weightedAvgPriceNum/weightedAvgPriceDen).toFixed(2)
     sumTotalPercent = (sumTotalProfitLoss/sumTotal*100).toFixed(2)
+    sumTotalProfitLoss = sumTotalProfitLoss.toFixed(2)
     // Summary totals
 
 
