@@ -4,7 +4,8 @@ module.exports = router
 
 router.get('/', (req, res, next) => {
   Coin.findAll({
-    include:[{all:true, nested:true}]
+    include:[{all:true, nested:true}],
+    order: [['currentMarketCap', 'DESC']]
   })
     .then(coins => res.json(coins))
     .catch(next)

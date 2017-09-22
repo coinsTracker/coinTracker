@@ -7,6 +7,7 @@ import history from './history'
 import {Main, Login, Signup, UserHome, CoinsList} from './components'
 import {me, fetchAllCoins} from './store'
 
+
 /**
  * COMPONENT
  */
@@ -17,7 +18,6 @@ class Routes extends Component {
 
   render () {
     const {isLoggedIn} = this.props
-    // const {coins} = this.props
 
     return (
       <Router history={history}>
@@ -33,6 +33,7 @@ class Routes extends Component {
                 <Switch>
                   {/* Routes placed here are only available after logging in */}
                   <Route path='/home' component={UserHome} />
+                  {/* <Route path='/users/:userId' component={SingleUser} /> */}
                 </Switch>
             }
             {/* Displays our Login component as a fallback */}
