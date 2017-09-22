@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import TransactionsList from './transactionsList'
+import UserSummary from './userSummary'
+import UserPanelTabs from './userPanelTabs';
 
 /**
  * COMPONENT
@@ -14,7 +16,7 @@ export const UserHome = (props) => {
 
   return (
     <div>
-      <h3>Welcome, {email}</h3>
+      <UserPanelTabs />
       <TransactionsList transactions={transactions} />
     </div>
   )

@@ -4,7 +4,7 @@ import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Login, Signup, UserHome, CoinsList} from './components'
+import {Main, Login, Signup, UserHome, CoinsList, UserSummary, } from './components'
 import {me, fetchAllCoins} from './store'
 
 
@@ -32,7 +32,9 @@ class Routes extends Component {
               isLoggedIn &&
                 <Switch>
                   {/* Routes placed here are only available after logging in */}
-                  <Route path='/home' component={UserHome} />
+                  <Route exact path='/home' component={UserHome} />
+                  <Route exact path='/home/summary' component={UserSummary} />
+                  <Route exact path='/home/transactions' component={UserHome} />
                   {/* <Route path='/users/:userId' component={SingleUser} /> */}
                 </Switch>
             }

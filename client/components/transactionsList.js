@@ -14,17 +14,26 @@ const TransactionsList = (props) => {
     let weightedAvgPriceDen = 0;
     let weightedAvgPrice = 0;
     let sumTotal = 0;
+    let sumTotalProfitLoss = 0
+    let sumTotalPercent = 0
     transactions.forEach(transaction => {
       totalQty += transaction.purchaseQuantity
       sumTotal += (transaction.purchaseQuantity*transaction.purchasePrice)
       weightedAvgPriceNum += sumTotal
       weightedAvgPriceDen += transaction.purchaseQuantity
+      sumTotalProfitLoss += (transaction.purchaseQuantity*(transaction.coin.currentPrice - transaction.purchasePrice))
     })
     weightedAvgPrice = weightedAvgPriceNum/weightedAvgPriceDen
-    //weighted average ((A2*B2)+(A3*B3))/SUM(B2:B3)
+    sumTotalPercent = (sumTotalProfitLoss/sumTotal*100).toFixed(2)
+    // Summary totals
+
+
+    //(transaction.purchaseQuantity*(transaction.coin.currentPrice- transaction.purchasePrice)
 
     return (
       <div>
+        <h2>Transaction View</h2>
+        <hr/>
         <table className='table table-striped'>
           <thead>
             <tr>
@@ -33,6 +42,9 @@ const TransactionsList = (props) => {
               <th>Purchase quantity</th>
               <th>Purchase price per coin</th>
               <th>Total</th>
+              <th>Current Price USD($)</th>
+              <th>Profit/Loss in USD($)</th>
+              <th>% profit/loss</th>
             </tr>
           </thead>
 
@@ -49,11 +61,14 @@ const TransactionsList = (props) => {
               {totalQty}
             </td>
             <td>
-              {weightedAvgPrice}
+              ${weightedAvgPrice}
             </td>
             <td>
-              {sumTotal}
+              ${sumTotal}
             </td>
+            <td></td>
+            <td>$ {sumTotalProfitLoss}</td>
+            <td>{sumTotalPercent} %</td>
             </tr>
           </tbody>
         </table>
