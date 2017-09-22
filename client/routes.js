@@ -20,6 +20,7 @@ class Routes extends Component {
     const {isLoggedIn} = this.props
 
     return (
+      <div className="wrapper">
       <Router history={history}>
         <Main>
           <Switch>
@@ -43,6 +44,7 @@ class Routes extends Component {
           </Switch>
         </Main>
       </Router>
+      </div>
     )
   }
 }
