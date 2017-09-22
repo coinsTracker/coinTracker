@@ -16,6 +16,7 @@ class TransactionLine extends Component {
       <td>{transaction.purchaseDate}</td>
       <td>{transaction.purchaseQuantity}</td>
       <td>{transaction.purchasePrice}</td>
+      <td>{transaction.purchasePrice*transaction.purchaseQuantity}</td>
     </tr>)
  }
 }

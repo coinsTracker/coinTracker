@@ -11,8 +11,9 @@ class CoinsList extends Component {
   render() {
     const allCoins = this.props.coins
     return (
-      <div>
-          <table>
+      <div className="row">
+        <div className="col-sm-12">
+          <table className='table table-striped'>
             <thead>
               <tr>
                 <th>Icon</th>
@@ -27,6 +28,7 @@ class CoinsList extends Component {
               {allCoins.map(coin => <CoinLine key={coin.id} coin={coin} />)}
             </tbody>
           </table>
+          </div>
       </div>
     )
   }
