@@ -14,13 +14,13 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-router.get('/:userId', (req, res, next) => {
-  User.findOne({
-    where:{
-      id: req.params.userId
-    },
-    include:[{all:true, nested:true}]
-  })
-    .then(user => res.json(user))
-    .catch(next)
-})
+// router.get('/:userId', (req, res, next) => {
+//   User.findOne({
+//     where:{
+//       id: req.params.userId
+//     },
+//     include:[{all:true, nested:true}]
+//   })
+//     .then(user => res.json(user))
+//     .catch(next)
+// })

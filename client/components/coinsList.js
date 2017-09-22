@@ -12,8 +12,6 @@ class CoinsList extends Component {
     const allCoins = this.props.coins
     return (
       <div>
-        Hello Coins!
-        {
           <table>
             <thead>
               <tr>
@@ -29,7 +27,6 @@ class CoinsList extends Component {
               {allCoins.map(coin => <CoinLine key={coin.id} coin={coin} />)}
             </tbody>
           </table>
-        }
       </div>
     )
   }
