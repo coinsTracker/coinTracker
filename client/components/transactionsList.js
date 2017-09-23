@@ -2,12 +2,21 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import TransactionLine from './transactionLine'
+import { fetchUserTransactions} from '../store'
 
 /**
  * COMPONENT
  */
-const TransactionsList = (props) => {
-    const transactions = props.transactions
+// const TransactionsList = (props) => {
+class TransactionsList extends Component {
+  componentDidMount () {
+    console.log('***CDM - ', this.props.userId)
+    this.props.loadInitialData(this.props.userId)
+  }
+  render () {
+    const {userId, transactions} = this.props
+    console.log ('USERID: ', userId)
+    // const transactions = props.transactions
 
     let totalQty = 0;
     let weightedAvgPriceNum = 0;
@@ -82,56 +91,21 @@ const TransactionsList = (props) => {
       </div>
     )
   }
-  
-  const mapState = (state) =>{
+}
+  const mapState = (state) => {
     return {
-        transactions: state.user.transactions
+        // transactions: state.user.transactions
+        // transactions: state.transactions
+        // transactions: state.user.transactions
+        userId: state.user.id,
+        transactions: state.transactions
     }
-} 
-
-export default  connect(mapState)(TransactionsList);
-// export default TransactionsList
-
-      // <div>
-      //   <h2>Transaction View</h2>
-      //   <hr/>
-      //   <table className='table table-striped'>
-      //     <thead>
-      //       <tr>
-      //         <th>Coin</th>
-      //         <th>Purchase date</th>
-      //         <th>Purchase quantity</th>
-      //         <th>Purchase price per coin</th>
-      //         <th>Total</th>
-      //         <th>Current Price USD($)</th>
-      //         <th>Profit/Loss in USD($)</th>
-      //         <th>% profit/loss</th>
-      //       </tr>
-      //     </thead>
-
-      //     <tbody>
-      //       {transactions.map(transaction => (<TransactionLine key={transaction.id} transaction={transaction} />))}
-      //       <tr>
-      //       <td>
-      //       {/* LEAVE THIS EMPTY */}
-      //       </td>
-      //       <td>
-      //       Totals
-      //       </td>
-      //       <td>
-      //         {totalQty}
-      //       </td>
-      //       <td>
-      //         ${weightedAvgPrice}
-      //       </td>
-      //       <td>
-      //         ${sumTotal}
-      //       </td>
-      //       <td></td>
-      //       <td>$ {sumTotalProfitLoss}</td>
-      //       <td>{sumTotalPercent} %</td>
-      //       </tr>
-      //     </tbody>
-      //   </table>
-      // </div>
-
+}
+const mapDispatch = (dispatch) => {
+  return {
+    loadInitialData (userId) {
+      dispatch(fetchUserTransactions(userId))
+    }
+  }
+}
+export default  connect(mapState, mapDispatch)(TransactionsList);

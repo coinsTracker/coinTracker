@@ -12,16 +12,16 @@ class CoinsList extends Component {
     const allCoins = this.props.coins
 
     //Chart data
-    var data = {
-      // A labels array that can contain any sort of values
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-      // Our series array that contains series objects or in this case series data arrays
-      series: [
-        [5, 2, 4, 2, 0]
-      ]
-    };
+    // var data = {
+    //   // A labels array that can contain any sort of values
+    //   labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+    //   // Our series array that contains series objects or in this case series data arrays
+    //   series: [
+    //     [5, 2, 4, 2, 0]
+    //   ]
+    // };
 
-    new Chartist.Line('.ct-chart', data);
+    // new Chartist.Line('.ct-chart', data);
 
 
     return (
@@ -36,7 +36,7 @@ class CoinsList extends Component {
         </div>
         <div className="content table-responsive table-full-width">
         {/* RENDER THE CHART */}
-        <div className="ct-chart .ct-minor-sixth"></div>
+        {/* <div className="ct-chart .ct-minor-sixth"></div> */}
         </div>
         </div>
 

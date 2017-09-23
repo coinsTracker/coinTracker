@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import TransactionsList from './transactionsList'
 import UserSummary from './userSummary'
-import UserPanelTabs from './userPanelTabs';
+import UserPanelTabs from './userPanelTabs'
 
 /**
  * COMPONENT
@@ -14,7 +14,7 @@ export const UserHome = (props) => {
   let transactions = user.transactions
 
   return (
-      <TransactionsList />
+    <TransactionsList />
   )
 }
 
@@ -38,4 +38,4 @@ UserHome.propTypes = {
   user: PropTypes.object
 }
 
-      {/* <UserPanelTabs /> */}
+      {/* <UserPanelTabs />       <TransactionsList />*/}

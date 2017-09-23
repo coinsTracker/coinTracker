@@ -9,3 +9,12 @@ router.get('/', (req, res, next) => {
   .then(transactions => res.json(transactions))
   .catch(next)
 })
+
+router.get('/:userId', (req, res, next) => {
+  Transaction.findAll({
+    where:{userId: req.params.userId},
+    include:[{all:true, nested:true}]
+  })
+  .then(transactions => res.json(transactions))
+  .catch(next)
+})
