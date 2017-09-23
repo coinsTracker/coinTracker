@@ -10,19 +10,95 @@ import CoinLine from './coinLine'
 class CoinsList extends Component {
   render() {
     const allCoins = this.props.coins
+    if(allCoins.length) {
+    //console.log("*****************",allCoins[0].name)
 
-    //Chart data
-    // var data = {
-    //   // A labels array that can contain any sort of values
-    //   labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-    //   // Our series array that contains series objects or in this case series data arrays
-    //   series: [
-    //     [5, 2, 4, 2, 0]
-    //   ]
-    // };
+    let colors = ["#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125","#cb2121","#830909","#923e99","#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125","#cb2121","#830909","#923e99"]
 
-    // new Chartist.Line('.ct-chart', data);
+    let contentData = []
 
+    for(var i=0; i<20; i++) {
+      var obj = {
+        'label': allCoins[i].name,
+        'value': allCoins[i].currentMarketCap,
+        'color': colors[i]
+      }
+      contentData.push(obj)
+    }
+
+    console.log("DATA ************", contentData)
+
+    var pie = new d3pie("pieChart", {
+      "header": {
+        "title": {
+          "text": "Market Data",
+          "fontSize": 24,
+          "font": "open sans"
+        },
+        "subtitle": {
+          "text": "Top 10 coins by market value",
+          "color": "#999999",
+          "fontSize": 12,
+          "font": "open sans"
+        },
+        "titleSubtitlePadding": 9
+      },
+      "footer": {
+        "color": "#999999",
+        "fontSize": 10,
+        "font": "open sans",
+        "location": "bottom-left"
+      },
+      "size": {
+        "canvasWidth": 590,
+        "pieOuterRadius": "90%"
+      },
+      "data": {
+        "sortOrder": "value-desc",
+        "content": contentData
+      },
+      "labels": {
+        "outer": {
+          "pieDistance": 32
+        },
+        "inner": {
+          "hideWhenLessThanPercentage": 3
+        },
+        "mainLabel": {
+          "fontSize": 11
+        },
+        "percentage": {
+          "color": "#ffffff",
+          "decimalPlaces": 0
+        },
+        "value": {
+          "color": "#adadad",
+          "fontSize": 11
+        },
+        "lines": {
+          "enabled": true
+        },
+        "truncation": {
+          "enabled": true
+        }
+      },
+      "effects": {
+        "load": {
+          "speed": 1380
+        },
+        "pullOutSegmentOnClick": {
+          "speed": 380,
+          "size": 8
+        }
+      },
+      "misc": {
+        "gradient": {
+          "enabled": true,
+          "percentage": 100
+        }
+      }
+    });
+    }
 
     return (
       <div className="content">
@@ -36,7 +112,8 @@ class CoinsList extends Component {
         </div>
         <div className="content table-responsive table-full-width">
         {/* RENDER THE CHART */}
-        {/* <div className="ct-chart .ct-minor-sixth"></div> */}
+        <div id="pieChart"></div>
+
         </div>
         </div>
 
