@@ -44,30 +44,19 @@ const Main = (props) => {
                         <p>Transaction List</p>
                     </NavLink>
                 </li>
-                {/* <li>
-                    <a href="typography.html">
-                        <i className="ti-text"></i>
-                        <p>Typography</p>
-                    </a>
-                </li> */}
                 <li>
-                    <a href="">
+                    <NavLink to="/home/transactions">
                         <i className="ti-pencil-alt2"></i>
                         <p>Add Transactions</p>
-                    </a>
+                    </NavLink>
                 </li>
                 <li>
-                    <a href="">
+                    <NavLink to="/home/transactions">
                         <i className="ti-map"></i>
                         <p>Graphs</p>
-                    </a>
+                    </NavLink>
                 </li>
-                {/* <li>
-                    <a href="notifications.html">
-                        <i className="ti-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li> */}
+
             </ul>
       </div>
     </div>

@@ -113,6 +113,7 @@ class CoinsList extends Component {
         <div className="content table-responsive table-full-width">
         {/* RENDER THE CHART */}
         <div id="pieChart"></div>
+
         </div>
         </div>
 
