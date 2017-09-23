@@ -10,15 +10,11 @@ import UserPanelTabs from './userPanelTabs';
  */
 export const UserHome = (props) => {
   const {email, user} = props
-  console.log(user);
 
   let transactions = user.transactions
 
   return (
-    <div>
-      <UserPanelTabs />
-      <TransactionsList transactions={transactions} />
-    </div>
+      <TransactionsList />
   )
 }
 
@@ -41,3 +37,5 @@ UserHome.propTypes = {
   email: PropTypes.string,
   user: PropTypes.object
 }
+
+      {/* <UserPanelTabs /> */}

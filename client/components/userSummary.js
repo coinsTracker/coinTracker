@@ -7,7 +7,7 @@ import TransactionLine from './transactionLine'
 
 const UserSummary = (props) => {
     const transactions = props.transactions
-    console.log(props)
+
     let totalQty = 0;
     let weightedAvgPriceNum = 0;
     let weightedAvgPriceDen = 0;
@@ -37,46 +37,86 @@ const UserSummary = (props) => {
         }
     })
 
-    console.log(portfolioCoins)
+ 
+    //SAMPLE CHART DATE
 
+    var data = {
+    // A labels array that can contain any sort of values
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+    // Our series array that contains series objects or in this case series data arrays
+    series: [
+    [5, 2, 4, 2, 0]
+    ]
+    };
 
+    // Create a new line chart object where as first parameter we pass in a selector
+    // that is resolving to our chart container element. The Second parameter
+    // is the actual data object.
+    new Chartist.Line('.ct-chart', data);
+
+    
     return (
-    <div>
-    <UserPanelTabs />
-    <h2>Summary</h2>
-    <h3>Total Investment: ${(sumTotal).toFixed(2)}</h3>
-    <h3>Profit/loss:      ${(sumTotalProfitLoss).toFixed(2)}</h3>
-    <hr/>
+    <div className="content">
+        <div className="row">
+            <div className="col-md-12">
+            <div className="card">
+                <div className="header">
+                    <h4 className="title">Summary</h4>
+                    <p className="category">Investment portfolio details</p>
+                </div>
+                <div className="content table-responsive table-full-width">
+                    <table className='table table-striped'>
+                    <thead>
+                        <tr>
+                        <th><h5>Total Investment</h5></th>
+                        <th><h5>Profit/loss</h5></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td><h5><b>${(sumTotal).toFixed(2)}</b></h5></td>
+                        <td><h5><b>${(sumTotalProfitLoss).toFixed(2)}</b></h5></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
 
-    {/* <TransactionLine key={portfolioCoins[coin].id} transaction={portfolioCoins[coin]} /> */}
-
-    <h4>Portfolio composition</h4>
-    {Object.keys(portfolioCoins).map(coin => (
-        <div key={portfolioCoins[coin].id}>
-        <table className='table table-striped'>
-            <thead>
-            <tr>
-                <th>Coin</th>
-                <th>Total quantity</th>
-                <th>Total amount invested</th>
-                <th>Current value USD($)</th>
-                <th>Total Profit/Loss</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-            <td><img src={portfolioCoins[coin].icon} width="25" height="25" /> {portfolioCoins[coin].name}</td>
-            <td>{portfolioCoins[coin].quantity}</td>
-            <td>$ {portfolioCoins[coin].amount}</td>
-            <td>$ {(portfolioCoins[coin].currentPrice * portfolioCoins[coin].quantity).toFixed(2) }</td>
-            <td>$ {((portfolioCoins[coin].currentPrice * portfolioCoins[coin].quantity) - portfolioCoins[coin].amount).toFixed(2)}</td>
-            </tr>
-            </tbody>
-        </table>
-        <br /><br /><br />
+            <div class="ct-chart ct-perfect-fourth"></div>
+            
+            <br />
+            <div className="card">
+                <div className="header">
+                    <h4 className="title">Portfolio composition</h4>
+                    <p className="category">Summary of all the coins in your portfolio</p>
+                </div>
+                <div className="content table-responsive table-full-width">
+                    <table className='table table-striped'>
+                    <thead>
+                    <tr>
+                    <th>Coin</th>
+                    <th>Total quantity</th>
+                    <th>Total amount invested</th>
+                    <th>Current value USD($)</th>
+                    <th>Total Profit/Loss</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {Object.keys(portfolioCoins).map(coin => (
+                    <tr>
+                    <td><img src={portfolioCoins[coin].icon} width="25" height="25" /> {portfolioCoins[coin].name}</td>
+                    <td>{portfolioCoins[coin].quantity}</td>
+                    <td>$ {portfolioCoins[coin].amount}</td>
+                    <td>$ {(portfolioCoins[coin].currentPrice * portfolioCoins[coin].quantity).toFixed(2) }</td>
+                    <td>$ {((portfolioCoins[coin].currentPrice * portfolioCoins[coin].quantity) - portfolioCoins[coin].amount).toFixed(2)}</td>
+                    </tr>
+                    ))}
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
         </div>
-    ))}
-
     </div>
     )
 }
