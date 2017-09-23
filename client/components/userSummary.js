@@ -37,24 +37,27 @@ const UserSummary = (props) => {
         }
     })
 
- 
-    //SAMPLE CHART DATE
+    //Chart data
+    // let data = {series:[]}
+    // Object.keys(portfolioCoins).map(coin => (
+    //     data.series.push((portfolioCoins[coin].currentPrice * portfolioCoins[coin].quantity).toFixed(2))
+    // ))
 
+    // console.log(data)
+
+    // SAMPLE CHART DATE
+    //Chart data
     var data = {
-    // A labels array that can contain any sort of values
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-    // Our series array that contains series objects or in this case series data arrays
-    series: [
-    [5, 2, 4, 2, 0]
-    ]
-    };
+        // A labels array that can contain any sort of values
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        // Our series array that contains series objects or in this case series data arrays
+        series: [
+          [5, 2, 4, 2, 0]
+        ]
+      };
 
-    // Create a new line chart object where as first parameter we pass in a selector
-    // that is resolving to our chart container element. The Second parameter
-    // is the actual data object.
-    new Chartist.Line('.ct-chart', data);
+      new Chartist.Line('.ct-chart', data);
 
-    
     return (
     <div className="content">
         <div className="row">
@@ -82,8 +85,17 @@ const UserSummary = (props) => {
                 </div>
             </div>
 
-            <div class="ct-chart ct-perfect-fourth"></div>
-            
+            <div className="card">
+                <div className="header">
+                <h4 className="title">Chart</h4>
+                <p className="category">Investment distribution</p>
+                </div>
+                <div className="content table-responsive table-full-width">
+                {/* RENDER THE CHART */}
+                <div className="ct-chart .ct-minor-sixth"></div>
+                </div>
+            </div>
+
             <br />
             <div className="card">
                 <div className="header">
@@ -125,6 +137,6 @@ const mapState = (state) =>{
     return {
         transactions: state.user.transactions
     }
-} 
+}
 
 export default  connect(mapState)(UserSummary);
