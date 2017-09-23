@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
+import {withRouter, Link, NavLink} from 'react-router-dom'
 import {logout} from '../store'
 // import Navbar from './navbar'
 
@@ -16,64 +16,58 @@ const Main = (props) => {
 
   return (
     <div>
-    <div className="sidebar" data-background-color="white" data-active-color="danger">
+    <div className="sidebar" data-background-color="black" data-active-color="info">
 
       <div className="sidebar-wrapper">
             <div className="logo">
-                <a href="http://www.creative-tim.com" className="simple-text">
-                    Creative Tim
-                </a>
+                <NavLink to="/" className="simple-text">
+                    coinTracker
+                </NavLink>
             </div>
 
             <ul className="nav">
                 <li className="active">
-                    <a href="dashboard.html">
+                    <NavLink to="/home/summary">
                         <i className="ti-panel"></i>
                         <p>Dashboard</p>
-                    </a>
+                    </NavLink>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <NavLink to="/home/profile">
                         <i className="ti-user"></i>
                         <p>User Profile</p>
-                    </a>
+                    </NavLink>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <NavLink to="/home/transactions">
                         <i className="ti-view-list-alt"></i>
-                        <p>Table List</p>
-                    </a>
+                        <p>Transaction List</p>
+                    </NavLink>
                 </li>
-                <li>
+                {/* <li>
                     <a href="typography.html">
                         <i className="ti-text"></i>
                         <p>Typography</p>
                     </a>
-                </li>
+                </li> */}
                 <li>
-                    <a href="icons.html">
+                    <a href="">
                         <i className="ti-pencil-alt2"></i>
-                        <p>Icons</p>
+                        <p>Add Transactions</p>
                     </a>
                 </li>
                 <li>
-                    <a href="maps.html">
+                    <a href="">
                         <i className="ti-map"></i>
-                        <p>Maps</p>
+                        <p>Graphs</p>
                     </a>
                 </li>
-                <li>
+                {/* <li>
                     <a href="notifications.html">
                         <i className="ti-bell"></i>
                         <p>Notifications</p>
                     </a>
-                </li>
-        <li className="active-pro">
-                    <a href="upgrade.html">
-                        <i className="ti-export"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
-                </li>
+                </li> */}
             </ul>
       </div>
     </div>
@@ -89,7 +83,7 @@ const Main = (props) => {
           <span className="icon-bar bar2"></span>
           <span className="icon-bar bar3"></span>
           </button>
-          <Link to="/coins" className="navbar-brand">coinTracker</Link>
+          <Link to="/coins">Market</Link>
         </div>
       {
           isLoggedIn
