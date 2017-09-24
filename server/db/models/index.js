@@ -1,6 +1,7 @@
 const User = require('./user')
 const Coin = require('./coin')
 const Transaction = require('./transaction')
+const CoinHistory = require('./coinHistory')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -9,6 +10,13 @@ const Transaction = require('./transaction')
  *    BlogPost.belongsTo(User)
  */
 
+Transaction.belongsTo(User)
+User.hasMany(Transaction)
+
+Transaction.belongsTo(Coin)
+Coin.hasMany(Transaction)
+// CoinHistory.belongsTo(Coin)
+Coin.hasMany(CoinHistory)
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
@@ -17,14 +25,9 @@ const Transaction = require('./transaction')
  * instead of: const User = require('../db/models/user')
  */
 
- Transaction.belongsTo(User)
- User.hasMany(Transaction)
-
- Transaction.belongsTo(Coin)
- Coin.hasMany(Transaction)
-
 module.exports = {
   User,
   Coin,
-  Transaction
+  Transaction,
+  CoinHistory
 }

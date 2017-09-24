@@ -10,3 +10,12 @@ router.get('/', (req, res, next) => {
     .then(coins => res.json(coins))
     .catch(next)
 })
+
+//NEEDED FOR THE ALL COIN HISTORY FETCH
+router.get('/:symbol', (req, res, next) => {
+  Coin.findOne({
+    where:{ symbol: req.params.symbol }
+  })
+    .then(coins => res.json(coins))
+    .catch(next)
+})
