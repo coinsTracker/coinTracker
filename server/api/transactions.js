@@ -10,6 +10,12 @@ router.get('/', (req, res, next) => {
   .catch(next)
 })
 
+router.post('/', (req, res, next) => {
+  Transaction.create(req.body)
+  .then(transactions => res.json(transactions))
+  .catch(next)
+})
+
 router.get('/:userId', (req, res, next) => {
   Transaction.findAll({
     where:{userId: req.params.userId},
