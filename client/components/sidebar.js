@@ -29,7 +29,7 @@ const Sidebar = (props) => {
                       </NavLink>
                   </li>
                   <li>
-                      <NavLink to="/home/transactions" >
+                      <NavLink to="/home/transactions/add" >
                           <i className="ti-pencil-alt2"></i>
                           <p>Add Transactions</p>
                       </NavLink>
