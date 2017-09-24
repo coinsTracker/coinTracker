@@ -22,11 +22,9 @@ const getUserTransactions = (transactions) => ({type: GET_USER_TRANSACTIONS, tra
 export const fetchUserTransactions = (userId) =>
   dispatch =>
   {
-    console.log("***** LOADING TRANSACTIONS for: ", userId)
     if (userId) {
       return axios.get(`/api/transactions/${userId}`)
       .then(res =>{
-        console.log(res.data)
         dispatch(getUserTransactions(res.data))})
       .catch(err => console.log(err))
     }

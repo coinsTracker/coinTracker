@@ -4,9 +4,11 @@
  * having to figure out which file they belong to!
  */
 export {default as Main} from './main'
-export {default as UserHome} from './user-home'
 export {Login, Signup} from './auth-form'
 export {default as CoinsList} from './coinsList'
 export {default as TransactionsList} from './transactionsList'
 export {default as UserSummary} from './userSummary'
 export {default as UserProfile} from './userProfile'
+export {default as Sidebar} from './sidebar'
+export {default as Navbar} from './navbar'
+export {default as Footer} from './footer'

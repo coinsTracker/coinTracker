@@ -19,9 +19,19 @@ let data = {
   // ],
   transactionData: [
     { purchaseQuantity: 10, purchasePrice: 4000.00, purchaseDate: '2017-09-19 23:43:20.759 +00:00', userId: 1, coinId: 1 },
-    { purchaseQuantity: 3, purchasePrice: 2500.00, purchaseDate: '2017-09-19 19:43:14.151-04', userId: 1, coinId: 1 },
-    { purchaseQuantity: 12, purchasePrice: 4000.00, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 2, coinId: 1 },
-    { purchaseQuantity: 30, purchasePrice: 4000.00, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 1, coinId: 2 },
+    { purchaseQuantity: 10, purchasePrice: 250.00, purchaseDate: '2017-09-19 19:43:14.151-04', userId: 1, coinId: 2 },
+    { purchaseQuantity: 12, purchasePrice: 500.00, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 1, coinId: 3 },
+    { purchaseQuantity: 5, purchasePrice: 4000.00, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 1, coinId: 1 },
+    { purchaseQuantity: 2, purchasePrice: 3700.00, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 1, coinId: 1 },
+    { purchaseQuantity: 500, purchasePrice: 0.17, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 1, coinId: 4 },
+    { purchaseQuantity: 20, purchasePrice: 347.00, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 1, coinId: 5 },
+    { purchaseQuantity: 40, purchasePrice: 280.00, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 1, coinId: 5 },
+    { purchaseQuantity: 10, purchasePrice: 4000.00, purchaseDate: '2017-09-19 23:43:20.759 +00:00', userId: 2, coinId: 1 },
+    { purchaseQuantity: 10, purchasePrice: 250.00, purchaseDate: '2017-09-19 19:43:14.151-04', userId: 2, coinId: 2 },
+    { purchaseQuantity: 12, purchasePrice: 500.00, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 2, coinId: 3 },
+    { purchaseQuantity: 5, purchasePrice: 4000.00, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 2, coinId: 1 },
+    { purchaseQuantity: 500, purchasePrice: 0.17, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 2, coinId: 4 },
+    { purchaseQuantity: 20, purchasePrice: 347.00, purchaseDate: '2017-09-19 19:43:14.126-04', userId: 2, coinId: 5 },
   ]
 };
 

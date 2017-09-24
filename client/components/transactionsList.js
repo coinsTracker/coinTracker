@@ -7,16 +7,12 @@ import { fetchUserTransactions} from '../store'
 /**
  * COMPONENT
  */
-// const TransactionsList = (props) => {
 class TransactionsList extends Component {
   componentDidMount () {
-    console.log('***CDM - ', this.props.userId)
     this.props.loadInitialData(this.props.userId)
   }
   render () {
     const {userId, transactions} = this.props
-    console.log ('USERID: ', userId)
-    // const transactions = props.transactions
 
     let totalQty = 0;
     let weightedAvgPriceNum = 0;
@@ -53,7 +49,7 @@ class TransactionsList extends Component {
                     <th>Coin</th>
                     <th>Purchase date</th>
                     <th>Purchase quantity</th>
-                    <th>Purchase price per coin</th>
+                    <th>Purchase price</th>
                     <th>Total</th>
                     <th>Current Price USD($)</th>
                     <th>Profit/Loss in USD($)</th>
@@ -73,7 +69,7 @@ class TransactionsList extends Component {
                       <b>{totalQty}</b>
                       </td>
                       <td>
-                      <b>${weightedAvgPrice}</b>
+                      {/* <b>${weightedAvgPrice}</b> */}
                       </td>
                       <td>
                       <b>${sumTotal}</b>
@@ -94,9 +90,6 @@ class TransactionsList extends Component {
 }
   const mapState = (state) => {
     return {
-        // transactions: state.user.transactions
-        // transactions: state.transactions
-        // transactions: state.user.transactions
         userId: state.user.id,
         transactions: state.transactions
     }

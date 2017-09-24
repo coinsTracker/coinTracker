@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {NavLink} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -10,22 +11,36 @@ const AuthForm = (props) => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor='email'><small>Email</small></label>
-          <input name='email' type='text' />
+    <div className="content">
+      <div className="row">
+        <div className="col-md-12">
+
+          <div className="card">
+              <div className="header">
+                  <h4 className="title">Authentication</h4>
+                  <p className="category">Login details</p>
+              </div>
+              <div className="form-group">
+                <form onSubmit={handleSubmit} name={name}>
+                <div>
+                  <label htmlFor='email'><small>Email</small></label>
+                  <input name='email' type='text' className="form-control border-input" />
+                </div>
+                <div>
+                  <label htmlFor='password'><small>Password</small></label>
+                  <input name='password' type='password' className="form-control border-input"/>
+                </div>
+                <div>
+                  <button type='submit' className="btn btn-info btn-fill btn-wd">{displayName}</button>
+                </div>
+                {error && error.response && <div> {error.response.data} </div>}
+                </form>
+                {/* <a href='/auth/google'>{displayName} with Google</a> */}
+                <NavLink to='/auth/google'>{displayName} with Google</NavLink>
+              </div>
+          </div>
         </div>
-        <div>
-          <label htmlFor='password'><small>Password</small></label>
-          <input name='password' type='password' />
-        </div>
-        <div>
-          <button type='submit'>{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href='/auth/google'>{displayName} with Google</a>
+      </div>
     </div>
   )
 }
