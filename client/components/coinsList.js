@@ -8,37 +8,36 @@ import CoinLine from './coinLine'
  * COMPONENT
  */
 class CoinsList extends Component {
+  componentDidMount () {
+    this.props.loadInitialData()
+  }
   render() {
-    const allCoins = this.props.coins
-    if(allCoins.length) {
-    //console.log("*****************",allCoins[0].name)
+    const {coins} = this.props
+    if(coins.length) {
+      // let colors = ["#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125","#cb2121","#830909","#923e99","#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125","#cb2121","#830909","#923e99"]
+      let colors = ["#cb2121","#830909","#923e99","#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125","#cb2121","#830909","#923e99","#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125"]
+      let contentData = []
 
-    let colors = ["#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125","#cb2121","#830909","#923e99","#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125","#cb2121","#830909","#923e99"]
-
-    let contentData = []
-
-    for(var i=0; i<20; i++) {
-      var obj = {
-        'label': allCoins[i].name,
-        'value': allCoins[i].currentMarketCap,
-        'color': colors[i]
+      for(var i=0; i<20; i++) {
+        var obj = {
+          'label': coins[i].name,
+          'value': coins[i].currentMarketCap,
+          'color': colors[i]
+        }
+        contentData.push(obj)
       }
-      contentData.push(obj)
-    }
 
-    console.log("DATA ************", contentData)
-
-    var pie = new d3pie("pieChart", {
+      var pie = new d3pie("pieChart", {
       "header": {
         "title": {
-          "text": "Market Data",
-          "fontSize": 24,
+          // "text": "",
+          // "fontSize": 24,
           "font": "open sans"
         },
         "subtitle": {
-          "text": "Top 10 coins by market value",
-          "color": "#999999",
-          "fontSize": 12,
+          // "text": "",
+          // "color": "#999999",
+          // "fontSize": 12,
           "font": "open sans"
         },
         "titleSubtitlePadding": 9
@@ -50,7 +49,9 @@ class CoinsList extends Component {
         "location": "bottom-left"
       },
       "size": {
-        "canvasWidth": 590,
+        "canvasHeight": 500,
+        "canvasWidth": 700,
+        "pieInnerRadius": "69%",
         "pieOuterRadius": "90%"
       },
       "data": {
@@ -97,26 +98,24 @@ class CoinsList extends Component {
           "percentage": 100
         }
       }
-    });
-    }
+      })
+    } //End of the IF CHECK
 
     return (
-      <div className="content">
+    <div className="content">
       <div className="row">
         <div className="col-md-12">
 
-        <div className="card">
-        <div className="header">
-        <h4 className="title">Chart</h4>
-        <p className="category">Investment distribution</p>
-        </div>
-        <div className="content table-responsive table-full-width">
-        {/* RENDER THE CHART */}
-        <div id="pieChart"></div>
-
-        </div>
-        </div>
-
+          <div className="card">
+            <div className="header">
+              <h4 className="title">Market Capitalization Distribution</h4>
+              <p className="category">Top 10 coins</p>
+            </div>
+            <div className="content table-responsive table-full-width">
+              {/* RENDER THE CHART */}
+              <div id="pieChart"></div>
+            </div>
+          </div>
 
           <div className="card">
             <div className="header">
@@ -136,14 +135,14 @@ class CoinsList extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {allCoins.map(coin => <CoinLine key={coin.id} coin={coin} />)}
+                  {coins.map(coin => <CoinLine key={coin.id} coin={coin} />)}
                 </tbody>
               </table>
             </div>
           </div>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
     )
   }
 }
@@ -153,16 +152,24 @@ class CoinsList extends Component {
 const mapState = (state) => {
   return {
     coins: state.coins,
-    user: state.user
+    user: state.user,
+
   }
 }
-
-export default connect(mapState)(CoinsList)
+const mapDispatch = (dispatch) => {
+  return {
+    loadInitialData () {
+      dispatch(fetchAllCoins())
+    }
+  }
+}
+export default connect(mapState, mapDispatch)(CoinsList)
 
 /**
  * PROP TYPES
  */
 CoinsList.propTypes = {
   coins: PropTypes.array,
-  user: PropTypes.object
+  user: PropTypes.object,
+  transactions: PropTypes.array
 }
