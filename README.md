@@ -13,3 +13,12 @@ The application leverages the following technology stack:
 - AXIOS, and Promises for async operations (API Load, Database access etc.)
 
 ![alt text](http://sodhi.org/images/COINTRACKER.gif)
+
+## Home Page
+![alt text](http://www.sodhi.org/images/AllCoins.png)
+
+## User Portfolio Page
+![alt text](http://www.sodhi.org/images/UserDashboard.png)
+
+## User Portfolio Page
+![alt text](http://www.sodhi.org/images/AllUserTransactions.png)
