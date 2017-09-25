@@ -8,8 +8,8 @@ const Coin = db.Coin;
 
 
 // Array that defines the user selected coins to fetch history for
-let coinsToFetch = ['BTC','ETH','BCH','XRP','DASH','LTC','XEM','IOT','XMR','ETC']
-// let coinsToFetch = ['BTC','ETC']
+// let coinsToFetch = ['BTC','ETH','BCH','XRP','DASH','LTC','XEM','IOT','XMR','ETC']
+let coinsToFetch = ['BTC']
 
 
 //Array where ALL coin history is stored while being fetched

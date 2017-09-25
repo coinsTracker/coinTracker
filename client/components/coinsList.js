@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {fetchAllCoins} from '../store'
+import {fetchAllCoins, fetchCoinHistory} from '../store'
 import CoinLine from './coinLine'
 
 /**
@@ -9,10 +9,13 @@ import CoinLine from './coinLine'
  */
 class CoinsList extends Component {
   componentDidMount () {
-    this.props.loadInitialData()
+    let val = 'BTC'
+    this.props.loadInitialData(val)
   }
+
   render() {
-    const {coins} = this.props
+    const {coins, coinHistory} = this.props
+
     if(coins.length) {
       // let colors = ["#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125","#cb2121","#830909","#923e99","#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125","#cb2121","#830909","#923e99"]
       let colors = ["#cb2121","#830909","#923e99","#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125","#cb2121","#830909","#923e99","#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125"]
@@ -49,8 +52,8 @@ class CoinsList extends Component {
         "location": "bottom-left"
       },
       "size": {
-        "canvasHeight": 500,
-        "canvasWidth": 700,
+        "canvasHeight": 350,
+        "canvasWidth": 550,
         "pieInnerRadius": "69%",
         "pieOuterRadius": "90%"
       },
@@ -101,6 +104,13 @@ class CoinsList extends Component {
       })
     } //End of the IF CHECK
 
+    // let data = []
+    // coinHistory.forEach(value => {
+    //   data.push({date: value.time , close: value.marketCap })
+    // })
+
+    // console.log(data)
+
     return (
     <div className="content">
       <div className="row">
@@ -114,6 +124,7 @@ class CoinsList extends Component {
             <div className="content table-responsive table-full-width">
               {/* RENDER THE CHART */}
               <div id="pieChart"></div>
+
             </div>
           </div>
 
@@ -153,13 +164,14 @@ const mapState = (state) => {
   return {
     coins: state.coins,
     user: state.user,
-
+    // coinHistory: state.coinHistory
   }
 }
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData () {
+    loadInitialData (val) {
       dispatch(fetchAllCoins())
+      // dispatch(fetchCoinHistory(val))
     }
   }
 }
@@ -171,5 +183,5 @@ export default connect(mapState, mapDispatch)(CoinsList)
 CoinsList.propTypes = {
   coins: PropTypes.array,
   user: PropTypes.object,
-  transactions: PropTypes.array
+  // coinHistory: PropTypes.array
 }

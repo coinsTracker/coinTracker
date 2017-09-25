@@ -14,7 +14,6 @@ class AddTransaction extends Component{
             date: Date.now(),
             quantity: 0,
             price: 0
-            
         }
         this.handleChangeCoinId = this.handleChangeCoinId.bind(this)
         this.handleChangeDate = this.handleChangeDate.bind(this)
@@ -63,63 +62,73 @@ class AddTransaction extends Component{
             <label htmlFor="selectCoin">Select Coin</label>
             <select value={this.state.coinId}
                     onChange={this.handleChangeCoinId}
-                    className='selectpicker form-control'
+                    className='selectpicker'
                     id="selectCoin">
                 { coinOptions }
             </select>
         </div>)
-        return(<div className='row'>
-                <div className='col-md-10 col-md-offset-2'>
-                    <div className='card'>
-                    <h4 className='title'>Add a Transaction</h4>
-                    <hr/>
-                    <div className='content'>
-                        <form onSubmit={this.handleSubmit}>
+
+        return(
+            <div className="content">
+            <div className="container-fluid">
+
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="card">
+                    <div className="header">
+                      <h4 className="title">Add a transaction</h4>
+                      <p className="category">Please enter the transaction details below</p>
+                    </div>
+
+                    <div className="content">
+                      <form onSubmit={this.handleSubmit}>
+
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="form-group">
                                     <label>Date</label>
                                     <input type="text" className="form-control border-input" placeholder="Date" onChange={this.handleChangeDate} disabled />
                                 </div>
-                            </div>
-                        </div>  
-                        <div className="row">
-                            <div className="col-md-12">
+
                                 <div className="form-group">
                                     { selectOptions }
                                 </div>
                             </div>
-                        </div>    
+                        </div>
+
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="form-group">
                                     <label>Quantity</label>
                                     <input type="text" className="form-control border-input" placeholder="Quantity" onChange={this.handleChangeQuantity} />
                                 </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputEmail1">Purchase Price</label>
+                                    <input className="form-control border-input" placeholder="Purchase Price" onChange={this.handleChangePrice} />
+                                </div>
                             </div>
                         </div>
+
                         <div className="row">
                             <div className="col-md-12">
-                            <div className="form-group">
-                                <label htmlFor="exampleInputEmail1">Purchase Price</label>
-                                <input className="form-control border-input" placeholder="Purchase Price" onChange={this.handleChangePrice} />
-                            </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-12">
-                            <div className="text-center">
-                                <button type="submit" className="btn btn-info btn-fill btn-wd">Add Transaction</button>
-                            </div>
-                            <div className="clearfix"></div>
+                                <div className="text-center">
+                                    <button type="submit" className="btn btn-info btn-fill btn-wd">Add Transaction</button>
+                                </div>
                             </div>
                         </div>
-                </form>
-                    
+
+                        <div className="clearfix"></div>
+                      </form>
                     </div>
-                    </div>
+
+{/* THE DIVS FOR THE TOP ROW */}
+                  </div>
                 </div>
-               </div>)
+              </div>
+            </div>
+          </div>
+            )
     }
 }
 
