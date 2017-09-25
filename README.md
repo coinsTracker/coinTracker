@@ -16,9 +16,14 @@ The application leverages the following technology stack:
 
 ## Home Page
 ![alt text](http://www.sodhi.org/images/AllCoins.png)
+![alt text](http://www.sodhi.org/images/AllCoins2.png)
 
 ## User Portfolio Page
 ![alt text](http://www.sodhi.org/images/UserDashboard.png)
 
-## User Portfolio Page
+## User All Transactions Page
 ![alt text](http://www.sodhi.org/images/AllUserTransactions.png)
+
+## Add new Transactions
+![alt text](http://www.sodhi.org/images/AddTransaction.png)
+
