@@ -10,7 +10,7 @@ The application leverages the following technology stack:
 - React for MVC component rendering
 - Redux for managing the state
 - D3 Graphs for visual graphs
-- AXIOS, and Promises for async operations (API Load, Database access etc.)
+- AXIOS, and Promises for async operations (API Load, Database access etc)
 
 ![alt text](http://sodhi.org/images/COINTRACKER.gif)
 
